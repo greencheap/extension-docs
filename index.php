@@ -1,5 +1,17 @@
 <?php
 return [
-    'name' => 'draft'
+    'name' => 'documents',
+
+    'main' => function(){},
+
+    'autoload' => [
+        'GreenCheap\\Documents\\' => 'src'
+    ],
+
+    'menus' => [
+        'documents' => [
+            
+        ]
+    ]
 ];
 ?>
