@@ -6,12 +6,6 @@ return [
 
     'autoload' => [
         'GreenCheap\\Documents\\' => 'src'
-    ],
-
-    'menus' => [
-        'documents' => [
-            
-        ]
     ]
 ];
 ?>
