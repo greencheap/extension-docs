@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        //
+        "admin/index":"./app/views/admin/index"
     },
     output: {
         path: path.resolve(__dirname, './app/bundle'),

@@ -1,9 +1,9 @@
 {
-    "name": "greencheap/documents",
+    "name": "greencheap/docs",
     "type": "greencheap-extension",
     "version": "1.0.0",
-    "title": "Documents",
-    "description": "GreenCheap Documents",
+    "title": "Docs",
+    "description": "GreenCheap Docs",
     "license": "MIT",
     "authors": [
         {

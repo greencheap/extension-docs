@@ -1,5 +1,5 @@
 {
-  "name": "documents",
+  "name": "docs",
   "scripts": {
     "webpack": "webpack --watch --colors --config webpack.dev.js",
     "webpack-build": "webpack --colors --config webpack.prod.js",

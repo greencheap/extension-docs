@@ -1,0 +1,11 @@
+<template>
+    <div>
+        Merhaba Dünya
+    </div>
+</template>
+
+<script>
+    export default {
+        props:[]
+    }
+</script>
