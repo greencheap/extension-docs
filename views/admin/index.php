@@ -1,9 +1,9 @@
-<?php $view->script('docs-admin-index' , 'docs:app/bundle/admin/index.js' , ['vue']) ?>
-<?php $view->style('docs-style' , 'docs:dist/css/docs.min.css') ?>
+<?php $view->script('docs_admin_index' , 'docs:app/bundle/admin/index.js' , ['vue']) ?>
+<?php $view->style('docs_style' , 'docs:dist/css/docs.min.css') ?>
 <section id="app">
     <div uk-grid>
         <div class="uk-width-medium@m">
-            <div>
+            <div v-if="categories.length">
                 <ul class="docs-category" uk-sortable>
                     <li v-for="(category , id) in orderByCategories" :id="id">
                         <span class="handler" uk-icon="menu"></span>
@@ -22,13 +22,15 @@
                     </li>
                 </ul>
             </div>
+            <div class="uk-card uk-card-body uk-card-default uk-text-center" v-if="!categories.length">{{'Not Found Categories' | trans}}</div>
             <button @click.prevent="openModal(draftCategory)" class="uk-margin-small uk-button uk-button-default uk-width-expand">{{'Add Category' | trans}}</button>
         </div>
 
         <div class="uk-width-expand">
-            <div class="">
+            <div>
                 <div class="uk-text-right">
-                    <a :href="$url('admin/docs/post/edit')" class="uk-button uk-button-primary">{{'Add Post' | trans}}</a>
+                    <a :href="$url('admin/docs/post/edit')" class="uk-button uk-button-primary" v-if="categories.length">{{'Add Post' | trans}}</a>
+                    <button class="uk-button uk-button-primary" :title="'You need to add a category first.' | trans" uk-tooltip disabled v-else>{{'Add Post' | trans}}</button>
                 </div>
             </div>
             <v-pagination :pages="pages" v-model="config.page" v-show="pages > 1 || config.page > 0"></v-pagination>
@@ -76,8 +78,9 @@
 
         <div class="uk-modal-footer uk-text-right">
             <a class="uk-button uk-button-text uk-margin-right" @click.prevent="close">{{ 'Close' | trans }}</a>
+            <button v-if="modalDraft.id && !modalDraft.hasPost" @click.prevent="deleteCategory(modalDraft.id)" type="button" class="uk-button uk-button-danger">{{ 'Delete' | trans }}</button>
             <button v-if="modalDraft.id" class="uk-button uk-button-primary" type="submit">{{ 'Save' | trans }}</button>
-            <button v-else class="uk-button uk-button-primary" type="submit">{{ 'Add' | trans }}</button>
+            <button v-if="!modalDraft.id" class="uk-button uk-button-primary" type="submit">{{ 'Add' | trans }}</button>
         </div>
     </form>
     </v-modal>

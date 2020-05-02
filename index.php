@@ -15,6 +15,13 @@ return [
             'icon' => 'docs:icon.svg',
             'url' => '@docs/admin/post',
             'active' => '@docs/admin/post*'
+        ],
+        'docs: index' => [
+            'parent' => 'docs',
+            'priority' => 0,
+            'label' => 'Docs',
+            'url' => '@docs/admin/post',
+            'active' => '@docs/admin/post*'
         ]
     ],
 

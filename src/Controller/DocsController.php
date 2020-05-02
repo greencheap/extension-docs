@@ -48,7 +48,7 @@ class DocsController
     }
 
     /**
-     * @Route("/post/edit")
+     * @Route("/post/edit" , name="post/edit")
      * @Request({"id":"integer"})
      * @param int $id
      * @return array
@@ -75,9 +75,11 @@ class DocsController
                 'name' => 'docs:views/admin/edit.php'
             ],
             '$data' => [
-                'statuses' => StatusModelService::getStatuses(),
-                'categories' => $categories,
-                'post' => $query
+                'data' => [
+                    'statuses' => StatusModelService::getStatuses(),
+                    'categories' => $categories,
+                ],
+                'query' => $query
             ]
         ];
 

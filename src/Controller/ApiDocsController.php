@@ -39,4 +39,21 @@ class ApiDocsController
         $query->save($category);
         return compact('query');
     }
+
+    /**
+     * @Route(methods="GET")
+     * @Request({"id":"integer"} , csrf=true)
+     * @param int $id
+     * @return array
+     */
+    public function bulkCategoryDeleteAction( int $id = 0)
+    {
+        if( !$category = Category::find($id)){
+            return App::abort(404 , __('Not Found Category'));
+        }
+        $category->delete();
+        return [
+            'msg' => true
+        ];
+    }
 }

@@ -67,6 +67,16 @@ module.exports = {
             this.categorySortable = document.getElementsByClassName('docs-category')[0].children;
         },
 
+        deleteCategory(id){
+            this.$http.get('admin/docs/api/bulkcategorydelete' , {
+                params:{id:id}
+            }).then((res)=>{
+                location.reload();
+            }).catch((err)=>{
+                this.$notify(err.data , 'danger');
+            })
+        },
+
         saveCategory(item , reload = false){
             this.$http.post('admin/docs/api/savecategory' , {category:item , id:item.id}).then((res)=>{
                 if(!item.id){
