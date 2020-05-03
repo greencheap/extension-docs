@@ -1,4 +1,5 @@
 import Settings from '../../components/post-edit-settings.vue';
+import Meta from '../../components/post-edit-meta.vue';
 window.Docs = {
     el: '#app',
     name: 'DocsEdit',
@@ -37,8 +38,24 @@ window.Docs = {
         this.tab.show(this.active);
     },
 
+    methods:{
+        save(){
+            this.$http.post('admin/docs/api/save' , {data:this.query , id:this.query.id}).then((res)=>{
+                const {query} = res.data;
+                if (!this.query.id) {
+                    window.history.replaceState({}, '', this.$url.route('admin/docs/post/edit', { id: query.id }));
+                }
+                this.$set(this, 'query', query);
+                this.$notify('Saved');
+            }).catch((err)=>{
+                this.$notify(err.bodyText , 'danger');
+            })
+        }
+    },
+
     components:{
-        Settings
+        Settings,
+        Meta
     }
 }
 

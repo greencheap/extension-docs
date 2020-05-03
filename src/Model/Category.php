@@ -4,6 +4,7 @@ namespace GreenCheap\Docs\Model;
 use GreenCheap\Database\ORM\Annotation\Entity;
 use GreenCheap\Database\ORM\Annotation\HasMany;
 use GreenCheap\System\Model\DataModelTrait;
+use GreenCheap\System\Model\StatusModelTrait;
 use GreenCheap\User\Model\AccessModelTrait;
 
 /**
@@ -52,7 +53,9 @@ class Category implements \JsonSerializable
     /**
      * @var array
      */
-    protected static $_properties = [];
+    protected static $properties = [
+        'hasPost' => 'hasPost'
+    ];
 
     /**
      * @return array
@@ -63,6 +66,17 @@ class Category implements \JsonSerializable
             self::STATUS_UNPUBLISHED => __('UnPublished'),
             self::STATUS_PUBLISHED => __('Published')
         ];
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasPost():bool
+    {
+        if( $query = Post::where('category_id = ?' , [$this->id])->first() ){
+            return true;
+        }
+        return false;
     }
 
     /**

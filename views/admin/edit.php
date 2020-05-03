@@ -9,7 +9,7 @@
         </div>
         <div class="uk-margin">
             <a class="uk-button uk-button-text uk-margin-right" :href="$url.route('admin/docs/post')">{{ query.id ? 'Close' : 'Cancel' | trans }}</a>
-            <button class="uk-button uk-button-primary" type="submit">
+            <button class="uk-button uk-button-primary" :disabled="!query.title" type="submit">
                 <span class="uk-text-middle">{{ 'Save' | trans }}</span>
             </button>
         </div>

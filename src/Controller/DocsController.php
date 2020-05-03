@@ -58,6 +58,10 @@ class DocsController
 
         $categories = array_values(Category::findAll());
 
+        if(!$categories){
+            return App::abort(400 , __('Not Found Categories'));
+        }
+
         if(!$query = Post::where(compact('id'))->first()){
             if($id){
                 return App::abort(404 , __('Not Found Post'));
@@ -65,7 +69,8 @@ class DocsController
             $query = Post::create([
                 'user_id' => App::user()->id,
                 'date' => new \DateTime(),
-                'category_id' => $categories[0]->id
+                'category_id' => $categories[0]->id,
+                'status' => StatusModelService::getStatus('STATUS_DRAFT')
             ]);
         }
 

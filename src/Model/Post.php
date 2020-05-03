@@ -1,9 +1,11 @@
 <?php
 namespace GreenCheap\Docs\Model;
 
+use GreenCheap\Application as App;
 use GreenCheap\Database\ORM\Annotation\BelongsTo;
 use GreenCheap\Database\ORM\Annotation\Entity;
 use GreenCheap\System\Model\DataModelTrait;
+use GreenCheap\System\Model\StatusModelTrait;
 
 /**
  * Class Post
@@ -12,10 +14,7 @@ use GreenCheap\System\Model\DataModelTrait;
  */
 class Post implements \JsonSerializable
 {
-    use PostModelTrait , DataModelTrait;
-
-    const STATUS_UNPUBLISHED = 0;
-    const STATUS_PUBLISHED = 1;
+    use PostModelTrait , DataModelTrait , StatusModelTrait;
 
     /**
      * @Column(type="integer")
@@ -44,11 +43,6 @@ class Post implements \JsonSerializable
     public $slug;
 
     /**
-     * @Column(type="integer")
-     */
-    public $status;
-
-    /**
      * @Column(type="datetime")
      */
     public $date;
@@ -74,21 +68,44 @@ class Post implements \JsonSerializable
     public $user;
 
     /**
+     * @BelongsTo(targetEntity="Category" , keyFrom="category_id")
+     */
+    public $category;
+
+    /**
      * @var array
      */
-    protected static $_properties = [
-
+    protected static $properties = [
+        'category_name' => 'getCategory',
+        'published' => 'isPublished',
+        'accessible' => 'isAccessible'
     ];
 
     /**
-     * @return array
+     * @return string|void
      */
-    public static function getStatuses():array
+    public function getCategory()
     {
-        return [
-            self::STATUS_UNPUBLISHED => __('UnPublished'),
-            self::STATUS_PUBLISHED => __('Published')
-        ];
+        if($this->category){
+            return $this->category->title;
+        }
+        return;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPublished()
+    {
+        return $this->status === self::getStatus('STATUS_PUBLISHED') && $this->date < new \DateTime;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAccessible()
+    {
+        return $this->isPublished();
     }
 
     /**
@@ -96,6 +113,12 @@ class Post implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        return $this->toArray();
+        $data = [
+            'url' => App::url('@blog/id', ['id' => $this->id ?: 0], 'base')
+        ];
+
+
+        return $this->toArray($data);
+
     }
 }

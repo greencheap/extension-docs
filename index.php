@@ -25,6 +25,16 @@ return [
         ]
     ],
 
+    'nodes' => [
+        'docs' => [
+            'name' => '@docs',
+            'label' => 'Docs',
+            'protected' => true,
+            'frontpage' => true,
+            'controller' => 'GreenCheap\\Docs\\Controller\\SiteController'
+        ]
+    ],
+
     'routes' => [
         'docs' => [
             'name' => '@docs',

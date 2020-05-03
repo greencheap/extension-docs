@@ -1,4 +1,4 @@
-module.exports = {
+var postIndex = {
     el:'#app',
     name: 'DocsIndex',
     data(){
@@ -7,7 +7,7 @@ module.exports = {
             categories:false,
             posts:false,
             config:{
-                filter: this.$session.get('docs.filter' , {order:'priority asc' , limit:50})
+                filter: this.$session.get('documents.filter' , {order:'priority asc' , limit:50})
             },
             pages:0,
             count:'',
@@ -16,8 +16,13 @@ module.exports = {
         } , window.$data)
     },
 
+    mixins:[
+        require('../../lib/index')
+    ],
+
     created(){
         this.setCategorySortable();
+        this.resource = this.$resource('admin/docs/api{/id}');
     },
 
     mounted(){
@@ -26,23 +31,29 @@ module.exports = {
             self.setCategorySortable();
             self.priorityCheck(self.categorySortable);
         });
+        this.$watch('config.page', this.load, { immediate: true });
     },
 
     watch: {
-        'docs.filter': {
+        'config.filter': {
             handler(filter) {
                 if (this.config.page) {
                     this.config.page = 0;
                 } else {
                     this.load();
                 }
-                this.$session.set('docs.filter', filter);
+                this.$session.set('documents.filter', filter);
             },
             deep: true,
         }
     },
 
     computed:{
+        categoryOptions() {
+            const options = _.map(this.categories, (category, id) => ({ text: category.title, value: category.id }));
+            return [{ label: this.$trans('Filter by'), options }];
+        },
+
         draftCategory(){
             return {
                 id:null,
@@ -60,7 +71,15 @@ module.exports = {
 
     methods:{
         load(){
-            console.log('Hello World')
+            this.resource.query({filter:this.config.filter , page:this.config.page}).then((res)=>{
+                const { data } = res;
+                this.$set(this, 'posts', data.posts);
+                this.$set(this, 'pages', data.pages);
+                this.$set(this, 'count', data.count);
+                this.$set(this, 'selected', []);
+            }).catch((err)=>{
+                this.$notify(err.bodyText , 'danger') 
+            })
         },
 
         setCategorySortable(){
@@ -120,7 +139,31 @@ module.exports = {
         onClose() {
             this.modalDraft = this.draftCategory
         },
+
+        status(status) {
+            const posts = this.getSelected();
+
+            posts.forEach((post) => {
+                post.status = status;
+            });
+
+            this.resource.save({ id: 'bulk' }, { posts }).then(function () {
+                this.load();
+                this.$notify('Posts saved.');
+            });
+        },
+
+        remove() {
+            this.resource.delete({ id: 'bulk' }, { ids: this.selected }).then(function () {
+                this.load();
+                this.$notify('Posts deleted.');
+            });
+        },
+
+        getSelected() {
+            return this.posts.filter(function (post) { return this.selected.indexOf(post.id) !== -1; }, this);
+        }
     }
 }
-
-Vue.ready(module.exports)
+export default postIndex
+Vue.ready(postIndex)
