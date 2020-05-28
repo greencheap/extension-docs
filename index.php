@@ -10,7 +10,7 @@ return [
 
     'menu' => [
         'docs' => [
-            'priority' => 100,
+            'priority' => 110,
             'label' => 'Docs',
             'icon' => 'docs:icon.svg',
             'url' => '@docs/admin/post',
