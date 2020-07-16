@@ -6,6 +6,7 @@ use GreenCheap\Database\ORM\Annotation\BelongsTo;
 use GreenCheap\Database\ORM\Annotation\Entity;
 use GreenCheap\System\Model\DataModelTrait;
 use GreenCheap\System\Model\StatusModelTrait;
+use GreenCheap\Docs\Model\Category;
 
 /**
  * Class Post
@@ -108,13 +109,25 @@ class Post implements \JsonSerializable
         return $this->isPublished();
     }
 
+    public function hasAccess()
+    {
+        $query = Category::where(['status = ?' , 'id = ?'], [StatusModelTrait::getStatus('STATUS_PUBLISHED') , $this->category_id])->where(function ($query) {
+            return $query->where('roles IS NULL')->whereInSet('roles', App::user()->roles, false, 'OR');
+        })->first();
+
+        if($query){
+            return true;
+        }
+        return false;
+    }
+
     /**
      * @inheritDoc
      */
     public function jsonSerialize()
     {
         $data = [
-            'url' => App::url('@blog/id', ['id' => $this->id ?: 0], 'base')
+            'url' => App::url('@docs/slug', ['slug' => $this->slug ?: 0], 'base')
         ];
 
 

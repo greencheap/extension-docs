@@ -5,6 +5,7 @@ module.exports = {
     entry: {
         "admin/index":"./app/views/admin/index",
         "admin/edit":"./app/views/admin/edit",
+        "docs":"./app/views/docs",
     },
     output: {
         path: path.resolve(__dirname, './app/bundle'),

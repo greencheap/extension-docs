@@ -1,6 +1,7 @@
 <?php
 namespace GreenCheap\Docs\Model;
 
+use GreenCheap\Application as App;
 use GreenCheap\Database\ORM\Annotation\Entity;
 use GreenCheap\Database\ORM\Annotation\HasMany;
 use GreenCheap\System\Model\DataModelTrait;
@@ -14,10 +15,7 @@ use GreenCheap\User\Model\AccessModelTrait;
  */
 class Category implements \JsonSerializable
 {
-    use CategoryModelTrait,DataModelTrait,AccessModelTrait;
-
-    const STATUS_UNPUBLISHED = 0;
-    const STATUS_PUBLISHED = 1;
+    use CategoryModelTrait, DataModelTrait, AccessModelTrait, StatusModelTrait;
 
     /**
      * @Column(type="integer")
@@ -46,7 +44,7 @@ class Category implements \JsonSerializable
     public $priority = 999;
 
     /**
-     * @HasMany(targetEntity="Post" , keyFrom="category_id" , orderBy={"priority":"ASC"})
+     * @HasMany(targetEntity="Post" , keyFrom="id" , keyTo="category_id")
      */
     public $posts;
 
@@ -54,19 +52,9 @@ class Category implements \JsonSerializable
      * @var array
      */
     protected static $properties = [
-        'hasPost' => 'hasPost'
+        'hasPost' => 'hasPost',
+        'getPosts' => 'getPosts'
     ];
-
-    /**
-     * @return array
-     */
-    public static function getStatuses():array
-    {
-        return [
-            self::STATUS_UNPUBLISHED => __('UnPublished'),
-            self::STATUS_PUBLISHED => __('Published')
-        ];
-    }
 
     /**
      * @return bool
@@ -77,6 +65,26 @@ class Category implements \JsonSerializable
             return true;
         }
         return false;
+    }
+
+    public function getPosts()
+    {
+        if($this->posts){
+            $date = new \DateTime;
+            $query = Post::where(['status = ?', 'date < ?' , 'category_id = ?'], [StatusModelTrait::getStatus('STATUS_PUBLISHED'), $date->format('Y-m-d h:m:s') , $this->id])->orderBy('priority' , 'asc')->get();
+            return $query;
+        }
+        return false;
+    }
+
+    public static function getFirstPost()
+    {
+        $query = self::where(['status = ?'], [StatusModelTrait::getStatus('STATUS_PUBLISHED')])->where(function ($query) {
+            return $query->where('roles IS NULL')->whereInSet('roles', App::user()->roles, false, 'OR');
+        })->orderBy('priority' , 'asc')->first();
+        $date = new \DateTime;
+        $query = Post::where(['status = ?', 'date < ?'], [StatusModelTrait::getStatus('STATUS_PUBLISHED'), $date->format('Y-m-d h:m:s')])->orderBy('priority' , 'asc')->first();
+        return $query->id;
     }
 
     /**
