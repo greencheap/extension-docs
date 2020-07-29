@@ -18,7 +18,7 @@
             <?php endforeach ?>
         </ul>
     </div>
-    <div class="uk-width-expand uk-first-column">
+    <div class="uk-width-expand@m uk-first-column">
         <div>
             <h1 class="uk-h1"><?= $doc->title ?></h1>
             <article class="uk-comment">
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div class="uk-width-medium">
+    <div class="uk-width-medium@m uk-visible@m">
         <ul class="uk-nav uk-nav-default">
             <?php foreach ($doc->links as $link) : ?>
                 <li><a href="#<?= $link['src'] ?>"><?= $link['name'] ?></a></li>

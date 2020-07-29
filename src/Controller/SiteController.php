@@ -11,7 +11,8 @@ class SiteController
 {
     /**
      * @Route("/")
-     * @Route("/{slug}" , name="slug") 
+     * @Route("/{slug}" , name="slug")
+     * @Captcha(verify="true")
      */
     public function indexAction(string $slug = '')
     {
