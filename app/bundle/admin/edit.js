@@ -1,1 +1,173 @@
-!function(t){var e={};function s(a){if(e[a])return e[a].exports;var n=e[a]={i:a,l:!1,exports:{}};return t[a].call(n.exports,n,n.exports,s),n.l=!0,n.exports}s.m=t,s.c=e,s.d=function(t,e,a){s.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:a})},s.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},s.t=function(t,e){if(1&e&&(t=s(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var a=Object.create(null);if(s.r(a),Object.defineProperty(a,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var n in t)s.d(a,n,function(e){return t[e]}.bind(null,n));return a},s.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return s.d(e,"a",e),e},s.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},s.p="",s(s.s=3)}({3:function(t,e,s){"use strict";s.r(e);var a=function(){var t=this,e=t.$createElement,s=t._self._c||e;return s("div",{staticClass:"uk-grid",attrs:{"uk-grid":""}},[s("div",{staticClass:"uk-width-expand"},[s("div",{staticClass:"uk-margin"},[s("label",{staticClass:"uk-form-label"},[t._v(t._s(t._f("trans")("Title")))]),t._v(" "),s("div",{staticClass:"uk-form-controls"},[s("v-input",{attrs:{view:"class: uk-input uk-width-expand",type:"text",name:"title",rules:{required:!0},message:t._f("trans")("You have to enter a title")},model:{value:t.query.title,callback:function(e){t.$set(t.query,"title",e)},expression:"query.title"}})],1)]),t._v(" "),s("div",{staticClass:"uk-margin"},[s("label",{staticClass:"uk-form-label"},[t._v(t._s(t._f("trans")("Content")))]),t._v(" "),s("div",{staticClass:"uk-form-controls"},[s("v-editor",{attrs:{options:{markdown:!0,height:300}},model:{value:t.query.content,callback:function(e){t.$set(t.query,"content",e)},expression:"query.content"}})],1)])]),t._v(" "),s("div",{staticClass:"uk-width-medium"},[s("div",{staticClass:"uk-margin"},[s("label",{staticClass:"uk-form-label"},[t._v(t._s(t._f("trans")("Slug")))]),t._v(" "),s("div",{staticClass:"uk-form-controls"},[s("input",{directives:[{name:"model",rawName:"v-model",value:t.query.slug,expression:"query.slug"}],staticClass:"uk-input uk-width-expand",attrs:{type:"text"},domProps:{value:t.query.slug},on:{input:function(e){e.target.composing||t.$set(t.query,"slug",e.target.value)}}})])]),t._v(" "),s("div",{staticClass:"uk-margin"},[s("label",{staticClass:"uk-form-label"},[t._v(t._s(t._f("trans")("Status")))]),t._v(" "),s("div",{staticClass:"uk-form-controls"},[s("select",{directives:[{name:"model",rawName:"v-model.number",value:t.query.status,expression:"query.status",modifiers:{number:!0}}],staticClass:"uk-select uk-width-expand",on:{change:function(e){var s=Array.prototype.filter.call(e.target.options,(function(t){return t.selected})).map((function(e){var s="_value"in e?e._value:e.value;return t._n(s)}));t.$set(t.query,"status",e.target.multiple?s:s[0])}}},t._l(t.data.statuses,(function(e,a){return s("option",{key:a,domProps:{value:a}},[t._v(t._s(e))])})),0)])]),t._v(" "),s("div",{staticClass:"uk-margin"},[s("label",{staticClass:"uk-form-label"},[t._v(t._s(t._f("trans")("Category")))]),t._v(" "),s("div",{staticClass:"uk-form-controls"},[s("select",{directives:[{name:"model",rawName:"v-model.number",value:t.query.category_id,expression:"query.category_id",modifiers:{number:!0}}],staticClass:"uk-select uk-width-expand",on:{change:function(e){var s=Array.prototype.filter.call(e.target.options,(function(t){return t.selected})).map((function(e){var s="_value"in e?e._value:e.value;return t._n(s)}));t.$set(t.query,"category_id",e.target.multiple?s:s[0])}}},t._l(t.data.categories,(function(e,a){return s("option",{key:a,domProps:{value:e.id}},[t._v(t._s(e.title))])})),0)])]),t._v(" "),s("div",{staticClass:"uk-margin"},[s("label",{staticClass:"uk-form-label"},[t._v(t._s(t._f("trans")("Date")))]),t._v(" "),s("div",{staticClass:"uk-form-controls"},[s("input-date",{model:{value:t.query.date,callback:function(e){t.$set(t.query,"date",e)},expression:"query.date"}})],1)])])])};a._withStripped=!0;function n(t,e,s,a,n,i,r,o){var u,l="function"==typeof t?t.options:t;if(e&&(l.render=e,l.staticRenderFns=s,l._compiled=!0),a&&(l.functional=!0),i&&(l._scopeId="data-v-"+i),r?(u=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),n&&n.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(r)},l._ssrRegister=u):n&&(u=o?function(){n.call(this,this.$root.$options.shadowRoot)}:n),u)if(l.functional){l._injectStyles=u;var c=l.render;l.render=function(t,e){return u.call(e),c(t,e)}}else{var d=l.beforeCreate;l.beforeCreate=d?[].concat(d,u):[u]}return{exports:t,options:l}}var i=n({props:["query","data"],section:{label:"Settings",priority:0}},a,[],!1,null,null,null);i.options.__file="app/components/post-edit-settings.vue";var r=i.exports,o=function(){var t=this,e=t.$createElement,s=t._self._c||e;return s("div",[s("v-meta-tag",{attrs:{source:t.query},on:{"update:source":function(e){t.query=e}}})],1)};o._withStripped=!0;var u=n({props:["query","data"],section:{label:"Meta",priority:100}},o,[],!1,null,null,null);u.options.__file="app/components/post-edit-meta.vue";var l=u.exports;window.Docs={el:"#app",name:"DocsEdit",data(){return _.merge({sections:[],active:this.$session.get("docs.edit.tab.active",0)},window.$data)},created(){const t=[];_.forIn(this.$options.components,(e,s)=>{e.section&&t.push(_.extend({name:s,priority:0},e.section))}),this.$set(this,"sections",_.sortBy(t,"priority"))},mounted(){const t=this;this.tab=UIkit.tab("#area-tab",{connect:"#area-content"}),UIkit.util.on(this.tab.connects,"show",(e,s)=>{if(s==t.tab)for(const e in s.toggles)if(s.toggles[e].classList.contains("uk-active")){t.$session.set("docs.edit.tab.active",e),t.active=e;break}}),this.tab.show(this.active)},methods:{save(){this.$http.post("admin/docs/api/save",{data:this.query,id:this.query.id}).then(t=>{const{query:e}=t.data;this.query.id||window.history.replaceState({},"",this.$url.route("admin/docs/post/edit",{id:e.id})),this.$set(this,"query",e),this.$notify("Saved")}).catch(t=>{this.$notify(t.bodyText,"danger")})}},components:{Settings:r,Meta:l}},Vue.ready(window.Docs)}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/views/admin/edit.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./app/components/post-edit-settings.vue":
+/*!***********************************************!*\
+  !*** ./app/components/post-edit-settings.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _post_edit_settings_vue_vue_type_template_id_57a37ca6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./post-edit-settings.vue?vue&type=template&id=57a37ca6& */ \"./app/components/post-edit-settings.vue?vue&type=template&id=57a37ca6&\");\n/* harmony import */ var _post_edit_settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./post-edit-settings.vue?vue&type=script&lang=js& */ \"./app/components/post-edit-settings.vue?vue&type=script&lang=js&\");\n/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ \"./node_modules/vue-loader/lib/runtime/componentNormalizer.js\");\n\n\n\n\n\n/* normalize component */\n\nvar component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(\n  _post_edit_settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  _post_edit_settings_vue_vue_type_template_id_57a37ca6___WEBPACK_IMPORTED_MODULE_0__[\"render\"],\n  _post_edit_settings_vue_vue_type_template_id_57a37ca6___WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"],\n  false,\n  null,\n  null,\n  null\n  \n)\n\n/* hot reload */\nif (false) { var api; }\ncomponent.options.__file = \"app/components/post-edit-settings.vue\"\n/* harmony default export */ __webpack_exports__[\"default\"] = (component.exports);\n\n//# sourceURL=webpack:///./app/components/post-edit-settings.vue?");
+
+/***/ }),
+
+/***/ "./app/components/post-edit-settings.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./app/components/post-edit-settings.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_post_edit_settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib!../../node_modules/vue-loader/lib??vue-loader-options!./post-edit-settings.vue?vue&type=script&lang=js& */ \"./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./app/components/post-edit-settings.vue?vue&type=script&lang=js&\");\n/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__[\"default\"] = (_node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_post_edit_settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[\"default\"]); \n\n//# sourceURL=webpack:///./app/components/post-edit-settings.vue?");
+
+/***/ }),
+
+/***/ "./app/components/post-edit-settings.vue?vue&type=template&id=57a37ca6&":
+/*!******************************************************************************!*\
+  !*** ./app/components/post-edit-settings.vue?vue&type=template&id=57a37ca6& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_post_edit_settings_vue_vue_type_template_id_57a37ca6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./post-edit-settings.vue?vue&type=template&id=57a37ca6& */ \"./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./app/components/post-edit-settings.vue?vue&type=template&id=57a37ca6&\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_post_edit_settings_vue_vue_type_template_id_57a37ca6___WEBPACK_IMPORTED_MODULE_0__[\"render\"]; });\n\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_post_edit_settings_vue_vue_type_template_id_57a37ca6___WEBPACK_IMPORTED_MODULE_0__[\"staticRenderFns\"]; });\n\n\n\n//# sourceURL=webpack:///./app/components/post-edit-settings.vue?");
+
+/***/ }),
+
+/***/ "./app/views/admin/edit.js":
+/*!*********************************!*\
+  !*** ./app/views/admin/edit.js ***!
+  \*********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_post_edit_settings_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/post-edit-settings.vue */ \"./app/components/post-edit-settings.vue\");\n\nwindow.Docs = {\n  el: '#app',\n  name: 'DocsEdit',\n\n  data() {\n    return _.merge({\n      sections: [],\n      active: this.$session.get('docs.edit.tab.active', 0)\n    }, window.$data);\n  },\n\n  created() {\n    const sections = [];\n\n    _.forIn(this.$options.components, (component, name) => {\n      if (component.section) {\n        sections.push(_.extend({\n          name,\n          priority: 0\n        }, component.section));\n      }\n    });\n\n    this.$set(this, 'sections', _.sortBy(sections, 'priority'));\n  },\n\n  mounted() {\n    const vm = this;\n    this.tab = UIkit.tab('#area-tab', {\n      connect: '#area-content'\n    });\n    UIkit.util.on(this.tab.connects, 'show', (e, tab) => {\n      if (tab != vm.tab) return;\n\n      for (const index in tab.toggles) {\n        if (tab.toggles[index].classList.contains('uk-active')) {\n          vm.$session.set('docs.edit.tab.active', index);\n          vm.active = index;\n          break;\n        }\n      }\n    });\n    this.tab.show(this.active);\n  },\n\n  methods: {\n    save() {\n      this.$http.post('admin/docs/api/save', {\n        data: this.query,\n        id: this.query.id\n      }).then(res => {\n        const {\n          query\n        } = res.data;\n\n        if (!this.query.id) {\n          window.history.replaceState({}, '', this.$url.route('admin/docs/post/edit', {\n            id: query.id\n          }));\n        }\n\n        this.$set(this, 'query', query);\n        this.$notify('Saved');\n      }).catch(err => {\n        this.$notify(err.bodyText, 'danger');\n      });\n    }\n\n  },\n  components: {\n    Settings: _components_post_edit_settings_vue__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n  }\n};\nVue.ready(window.Docs);\n\n//# sourceURL=webpack:///./app/views/admin/edit.js?");
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./app/components/post-edit-settings.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./app/components/post-edit-settings.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  props: ['query', 'data'],\n  section: {\n    label: 'Settings',\n    priority: 0\n  }\n});\n\n//# sourceURL=webpack:///./app/components/post-edit-settings.vue?./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options");
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./app/components/post-edit-settings.vue?vue&type=template&id=57a37ca6&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./app/components/post-edit-settings.vue?vue&type=template&id=57a37ca6& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function() {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"div\", { staticClass: \"uk-grid\", attrs: { \"uk-grid\": \"\" } }, [\n    _c(\"div\", { staticClass: \"uk-width-expand\" }, [\n      _c(\"div\", { staticClass: \"uk-margin\" }, [\n        _c(\"label\", { staticClass: \"uk-form-label\" }, [\n          _vm._v(_vm._s(_vm._f(\"trans\")(\"Title\")))\n        ]),\n        _vm._v(\" \"),\n        _c(\n          \"div\",\n          { staticClass: \"uk-form-controls\" },\n          [\n            _c(\"v-input\", {\n              attrs: {\n                view: \"class: uk-input uk-width-expand\",\n                type: \"text\",\n                name: \"title\",\n                rules: { required: true },\n                message: _vm._f(\"trans\")(\"You have to enter a title\")\n              },\n              model: {\n                value: _vm.query.title,\n                callback: function($$v) {\n                  _vm.$set(_vm.query, \"title\", $$v)\n                },\n                expression: \"query.title\"\n              }\n            })\n          ],\n          1\n        )\n      ]),\n      _vm._v(\" \"),\n      _c(\"div\", { staticClass: \"uk-margin\" }, [\n        _c(\"label\", { staticClass: \"uk-form-label\" }, [\n          _vm._v(_vm._s(_vm._f(\"trans\")(\"Content\")))\n        ]),\n        _vm._v(\" \"),\n        _c(\n          \"div\",\n          { staticClass: \"uk-form-controls\" },\n          [\n            _c(\"v-editor\", {\n              attrs: { options: { markdown: true, height: 300 } },\n              model: {\n                value: _vm.query.content,\n                callback: function($$v) {\n                  _vm.$set(_vm.query, \"content\", $$v)\n                },\n                expression: \"query.content\"\n              }\n            })\n          ],\n          1\n        )\n      ])\n    ]),\n    _vm._v(\" \"),\n    _c(\"div\", { staticClass: \"uk-width-medium\" }, [\n      _c(\"div\", { staticClass: \"uk-margin\" }, [\n        _c(\"label\", { staticClass: \"uk-form-label\" }, [\n          _vm._v(_vm._s(_vm._f(\"trans\")(\"Slug\")))\n        ]),\n        _vm._v(\" \"),\n        _c(\"div\", { staticClass: \"uk-form-controls\" }, [\n          _c(\"input\", {\n            directives: [\n              {\n                name: \"model\",\n                rawName: \"v-model\",\n                value: _vm.query.slug,\n                expression: \"query.slug\"\n              }\n            ],\n            staticClass: \"uk-input uk-width-expand\",\n            attrs: { type: \"text\" },\n            domProps: { value: _vm.query.slug },\n            on: {\n              input: function($event) {\n                if ($event.target.composing) {\n                  return\n                }\n                _vm.$set(_vm.query, \"slug\", $event.target.value)\n              }\n            }\n          })\n        ])\n      ]),\n      _vm._v(\" \"),\n      _c(\"div\", { staticClass: \"uk-margin\" }, [\n        _c(\"label\", { staticClass: \"uk-form-label\" }, [\n          _vm._v(_vm._s(_vm._f(\"trans\")(\"Status\")))\n        ]),\n        _vm._v(\" \"),\n        _c(\"div\", { staticClass: \"uk-form-controls\" }, [\n          _c(\n            \"select\",\n            {\n              directives: [\n                {\n                  name: \"model\",\n                  rawName: \"v-model.number\",\n                  value: _vm.query.status,\n                  expression: \"query.status\",\n                  modifiers: { number: true }\n                }\n              ],\n              staticClass: \"uk-select uk-width-expand\",\n              on: {\n                change: function($event) {\n                  var $$selectedVal = Array.prototype.filter\n                    .call($event.target.options, function(o) {\n                      return o.selected\n                    })\n                    .map(function(o) {\n                      var val = \"_value\" in o ? o._value : o.value\n                      return _vm._n(val)\n                    })\n                  _vm.$set(\n                    _vm.query,\n                    \"status\",\n                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]\n                  )\n                }\n              }\n            },\n            _vm._l(_vm.data.statuses, function(status, id) {\n              return _c(\"option\", { key: id, domProps: { value: id } }, [\n                _vm._v(_vm._s(status))\n              ])\n            }),\n            0\n          )\n        ])\n      ]),\n      _vm._v(\" \"),\n      _c(\"div\", { staticClass: \"uk-margin\" }, [\n        _c(\"label\", { staticClass: \"uk-form-label\" }, [\n          _vm._v(_vm._s(_vm._f(\"trans\")(\"Category\")))\n        ]),\n        _vm._v(\" \"),\n        _c(\"div\", { staticClass: \"uk-form-controls\" }, [\n          _c(\n            \"select\",\n            {\n              directives: [\n                {\n                  name: \"model\",\n                  rawName: \"v-model.number\",\n                  value: _vm.query.category_id,\n                  expression: \"query.category_id\",\n                  modifiers: { number: true }\n                }\n              ],\n              staticClass: \"uk-select uk-width-expand\",\n              on: {\n                change: function($event) {\n                  var $$selectedVal = Array.prototype.filter\n                    .call($event.target.options, function(o) {\n                      return o.selected\n                    })\n                    .map(function(o) {\n                      var val = \"_value\" in o ? o._value : o.value\n                      return _vm._n(val)\n                    })\n                  _vm.$set(\n                    _vm.query,\n                    \"category_id\",\n                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]\n                  )\n                }\n              }\n            },\n            _vm._l(_vm.data.categories, function(category, id) {\n              return _c(\n                \"option\",\n                { key: id, domProps: { value: category.id } },\n                [_vm._v(_vm._s(category.title))]\n              )\n            }),\n            0\n          )\n        ])\n      ]),\n      _vm._v(\" \"),\n      _c(\"div\", { staticClass: \"uk-margin\" }, [\n        _c(\"label\", { staticClass: \"uk-form-label\" }, [\n          _vm._v(_vm._s(_vm._f(\"trans\")(\"Date\")))\n        ]),\n        _vm._v(\" \"),\n        _c(\n          \"div\",\n          { staticClass: \"uk-form-controls\" },\n          [\n            _c(\"input-date\", {\n              model: {\n                value: _vm.query.date,\n                callback: function($$v) {\n                  _vm.$set(_vm.query, \"date\", $$v)\n                },\n                expression: \"query.date\"\n              }\n            })\n          ],\n          1\n        )\n      ])\n    ])\n  ])\n}\nvar staticRenderFns = []\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./app/components/post-edit-settings.vue?./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options");
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return normalizeComponent; });\n/* globals __VUE_SSR_CONTEXT__ */\n\n// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).\n// This module is a runtime utility for cleaner component module output and will\n// be included in the final webpack user bundle.\n\nfunction normalizeComponent (\n  scriptExports,\n  render,\n  staticRenderFns,\n  functionalTemplate,\n  injectStyles,\n  scopeId,\n  moduleIdentifier, /* server only */\n  shadowMode /* vue-cli only */\n) {\n  // Vue.extend constructor export interop\n  var options = typeof scriptExports === 'function'\n    ? scriptExports.options\n    : scriptExports\n\n  // render functions\n  if (render) {\n    options.render = render\n    options.staticRenderFns = staticRenderFns\n    options._compiled = true\n  }\n\n  // functional template\n  if (functionalTemplate) {\n    options.functional = true\n  }\n\n  // scopedId\n  if (scopeId) {\n    options._scopeId = 'data-v-' + scopeId\n  }\n\n  var hook\n  if (moduleIdentifier) { // server build\n    hook = function (context) {\n      // 2.3 injection\n      context =\n        context || // cached call\n        (this.$vnode && this.$vnode.ssrContext) || // stateful\n        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional\n      // 2.2 with runInNewContext: true\n      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {\n        context = __VUE_SSR_CONTEXT__\n      }\n      // inject component styles\n      if (injectStyles) {\n        injectStyles.call(this, context)\n      }\n      // register component module identifier for async chunk inferrence\n      if (context && context._registeredComponents) {\n        context._registeredComponents.add(moduleIdentifier)\n      }\n    }\n    // used by ssr in case component is cached and beforeCreate\n    // never gets called\n    options._ssrRegister = hook\n  } else if (injectStyles) {\n    hook = shadowMode\n      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }\n      : injectStyles\n  }\n\n  if (hook) {\n    if (options.functional) {\n      // for template-only hot-reload because in that case the render fn doesn't\n      // go through the normalizer\n      options._injectStyles = hook\n      // register for functional component in vue file\n      var originalRender = options.render\n      options.render = function renderWithStyleInjection (h, context) {\n        hook.call(context)\n        return originalRender(h, context)\n      }\n    } else {\n      // inject component registration as beforeCreate hook\n      var existing = options.beforeCreate\n      options.beforeCreate = existing\n        ? [].concat(existing, hook)\n        : [hook]\n    }\n  }\n\n  return {\n    exports: scriptExports,\n    options: options\n  }\n}\n\n\n//# sourceURL=webpack:///./node_modules/vue-loader/lib/runtime/componentNormalizer.js?");
+
+/***/ })
+
+/******/ });

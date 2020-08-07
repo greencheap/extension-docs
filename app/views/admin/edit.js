@@ -1,5 +1,4 @@
 import Settings from '../../components/post-edit-settings.vue';
-import Meta from '../../components/post-edit-meta.vue';
 window.Docs = {
     el: '#app',
     name: 'DocsEdit',
@@ -55,7 +54,6 @@ window.Docs = {
 
     components:{
         Settings,
-        Meta
     }
 }
 
