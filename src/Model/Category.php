@@ -70,8 +70,7 @@ class Category implements \JsonSerializable
     public function getPosts()
     {
         if($this->posts){
-            $date = new \DateTime;
-            $query = Post::where(['status = ?', 'date < ?' , 'category_id = ?'], [StatusModelTrait::getStatus('STATUS_PUBLISHED'), $date->format('Y-m-d h:m:s') , $this->id])->orderBy('priority' , 'asc')->get();
+            $query = Post::where(['status = :status', 'date < :date' , 'category_id = :category_id'], ['status' => StatusModelTrait::getStatus('STATUS_PUBLISHED'), 'date' => new \DateTime() , 'category_id' => $this->id])->orderBy('priority' , 'asc')->get();
             return $query;
         }
         return false;
@@ -79,11 +78,10 @@ class Category implements \JsonSerializable
 
     public static function getFirstPost()
     {
-        $query = self::where(['status = ?'], [StatusModelTrait::getStatus('STATUS_PUBLISHED')])->where(function ($query) {
+        $query = self::where(['status = :status'], ['status' => StatusModelTrait::getStatus('STATUS_PUBLISHED')])->where(function ($query) {
             return $query->where('roles IS NULL')->whereInSet('roles', App::user()->roles, false, 'OR');
         })->orderBy('priority' , 'asc')->first();
-        $date = new \DateTime;
-        $query = Post::where(['status = ?', 'date < ?'], [StatusModelTrait::getStatus('STATUS_PUBLISHED'), $date->format('Y-m-d h:m:s')])->orderBy('priority' , 'asc')->first();
+        $query = Post::where(['status = :status', 'date < :date'], ['status' => StatusModelTrait::getStatus('STATUS_PUBLISHED'), 'date' => new \DateTime])->orderBy('priority' , 'asc')->first();
         return $query->id;
     }
 

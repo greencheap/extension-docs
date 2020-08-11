@@ -1,14 +1,14 @@
 {
     "name": "greencheap/docs",
     "type": "greencheap-extension",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "title": "Docs",
     "description": "GreenCheap Docs",
     "license": "MIT",
     "authors": [
         {
             "name": "GreenCheap",
-            "email": "info@greencheap.net",
+            "email": "support@greencheap.net",
             "homepage": "http://greencheap.net"
         }
     ],
