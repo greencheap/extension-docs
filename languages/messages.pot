@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GreenCheap 2.0.9.3-beta (greencheap/docs, messages)\n"
+"POT-Creation-Date: 2020-08-24 00:41+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Filter by"
+msgstr ""
+
+msgid "No posts found."
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Category"
+msgstr ""
+
+msgid "Edit Docs"
+msgstr ""
+
+msgid "Add Docs"
+msgstr ""
+
+msgid "Not Found Category"
+msgstr ""
+
+msgid "Invalid slug."
+msgstr ""
+
+msgid "Docs Index"
+msgstr ""
+
+msgid "Not Found Categories"
+msgstr ""
+
+msgid "Not Found Post"
+msgstr ""
+
+msgid "Edit Post"
+msgstr ""
+
+msgid "New Post"
+msgstr ""
+
+msgid "Not Found Document"
+msgstr ""
+
