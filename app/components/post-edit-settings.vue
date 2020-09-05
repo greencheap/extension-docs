@@ -11,7 +11,7 @@
             <div class="uk-margin">
                 <label class="uk-form-label">{{'Content' | trans}}</label>
                 <div class="uk-form-controls">
-                    <v-editor v-model="query.content" :options="{markdown : true , height: 300}" />
+                    <v-editor v-model="query.content" :options="{markdown : query.data.markdown , height: 600}" />
                 </div>
             </div>
 
@@ -47,6 +47,22 @@
                 <label class="uk-form-label">{{'Date' | trans}}</label>
                 <div class="uk-form-controls">
                     <input-date v-model="query.date"/>
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ 'Source Edit Link' | trans }}</label>
+                <div class="uk-form-controls">
+                    <input v-model="query.data.sourceedit" placeholder="https://github.com" type="url" class="uk-input">
+                </div>
+            </div>
+
+            <div class="uk-margin">
+                <label class="uk-form-label">{{ 'Options' | trans }}</label>
+                <div class="uk-form-controls uk-form-controls-text">
+                    <p class="uk-margin-small">
+                        <label><input v-model="query.data.markdown" class="uk-checkbox" type="checkbox" value="1"><span class="uk-margin-small-left">{{ 'Enable Markdown' | trans }}</span></label>
+                    </p>
                 </div>
             </div>
 

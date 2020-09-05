@@ -78,7 +78,11 @@
                             }"></span>
                         </div>
                         <div class="uk-width-small uk-text-center">{{post.category_name | trans}}</div>
-                        <div class="uk-width-small uk-text-center">{{post.url | trans}}</div>
+                        <div class="uk-width-small uk-text-center">
+                            <a target="_blank" v-if="post.accessible && post.url" :href="$url.route(post.url.substr(1))">{{ decodeURI(post.url) }}</a>
+                            <span v-if="!post.accessible && post.url">{{ decodeURI(post.url) }}</span>
+                            <span v-if="!post.url">{{ 'Disabled' | trans }}</span>
+                        </div>
                     </li>
                 </ul>
             </div>

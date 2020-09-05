@@ -127,7 +127,7 @@ class Post implements \JsonSerializable
     public function jsonSerialize()
     {
         $data = [
-            'url' => App::url('@docs/slug', ['slug' => $this->slug ?: 0], 'base')
+            'url' => App::url('@docs/id', ['id' => $this->id ?: 0], 'base')
         ];
 
 

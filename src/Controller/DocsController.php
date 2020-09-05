@@ -72,6 +72,9 @@ class DocsController
                 'category_id' => $categories[0]->id,
                 'status' => StatusModelService::getStatus('STATUS_DRAFT')
             ]);
+
+            $module = App::module('docs');
+            $query->set('markdown', $module->config('posts.markdown_enabled'));
         }
 
         return [
@@ -87,6 +90,21 @@ class DocsController
                 'query' => $query
             ]
         ];
+    }
 
+    /**
+     * @Access("system: access settings")
+     */
+    public function settingsAction()
+    {
+        return [
+            '$view' => [
+                'title' => __('Docs Settings'),
+                'name'  => 'docs/admin/settings.php'
+            ],
+            '$data' => [
+                'config' => App::module('docs')->config()
+            ]
+        ];
     }
 }

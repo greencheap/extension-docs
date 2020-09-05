@@ -1,4 +1,5 @@
 <?php
+use GreenCheap\Docs\Event\RouteListener;
 return [
     'name' => 'docs',
 
@@ -22,6 +23,13 @@ return [
             'label' => 'Docs',
             'url' => '@docs/admin/post',
             'active' => '@docs/admin/post*'
+        ],
+        'docs: settings' => [
+            'label' => 'Settings',
+            'parent' => 'docs',
+            'url' => '@docs/admin/settings',
+            'active' => '@docs/admin/settings*',
+            'access' => 'system: access settings'
         ]
     ],
 
@@ -43,6 +51,25 @@ return [
                 'GreenCheap\\Docs\\Controller\\ApiDocsController',
             ]
         ]
+    ],
+
+    'config' => [
+        'posts' => [
+            'posts_per_page' => 20,
+            'markdown_enabled' => true
+        ],
+        'permalink' => [
+            'type' => '',
+            'custom' => '{slug}'
+        ]
+    ],
+
+    'events' => [
+        'boot' => function ($event, $app) {
+            $app->subscribe(
+                new RouteListener,
+            );
+        },
     ]
 ];
 ?>

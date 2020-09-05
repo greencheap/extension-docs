@@ -11,55 +11,57 @@ class SiteController
 {
     /**
      * @Route("/")
-     * @Route("/{slug}" , name="slug")
+     * @Route("/{id}" , name="id")
      * @Captcha(verify="true")
      */
-    public function indexAction(string $slug = '')
+    public function indexAction(string $id = '')
     {
-        $date = new \DateTime;
         $categories = Category::where(['status = :status'], ['status' => StatusModelTrait::getStatus('STATUS_PUBLISHED')])->where(function ($query) {
             return $query->where('roles IS NULL')->whereInSet('roles', App::user()->roles, false, 'OR');
         })->orderBy('priority' , 'asc')->related('posts');
 
         $query = Post::where(['status = :status', 'date < :date'], ['status' => StatusModelTrait::getStatus('STATUS_PUBLISHED'), 'date' => new \DateTime]);
-        if ($slug) {
-            $query->where('slug = :slug', ['slug' => $slug]);
+        if ($id) {
+            $query->where('id = :id', ['id' => $id]);
         } else {
             $query->where('id = :id', ['id' => Category::getFirstPost()]);
         }
+        $query->related('user');
+        $post = $query->first();
 
-        $doc = $query->related('user')->first();
-
-        if(!$doc || !$doc->hasAccess()){
+        if(!$post || !$post->hasAccess()){
             return App::abort(404 , __('Not Found Document'));
         }
-       
-        $doc->content = App::content()->applyPlugins($doc->content, ['markdown' => true]);
-        $doc->links = $this->doMarkdownLinks($doc->content);
-        $description = $doc->get('meta.og:description');
+
+        $post->content = App::content()->applyPlugins($post->content, ['post' => $post, 'markdown' => $post->get('markdown')]);
+
+        $post->links = $this->doMarkdownLinks($post->content);
+        $description = $post->get('meta.og:description');
+
         if (!$description) {
-            $description = strip_tags($doc->content);
+            $description = strip_tags($post->content);
             $description = rtrim(mb_substr($description, 0, 150), " \t\n\r\0\x0B.,") . '...';
         }
 
         return [
             '$view' => [
-                'title' => $doc->title,
+                'title' => $post->title,
                 'name' => 'docs/index.php',
                 'og:type' => 'article',
-                'article:published_time' => $doc->date->format(\DateTime::ATOM),
-                'article:modified_time' => $doc->modified->format(\DateTime::ATOM),
-                'article:author' => $doc->user->name,
-                'og:title' => $doc->get('meta.og:title') ?: $doc->title,
+                'article:published_time' => $post->date->format(\DateTime::ATOM),
+                'article:modified_time' => $post->modified->format(\DateTime::ATOM),
+                'article:author' => $post->user->name,
+                'og:title' => $post->get('meta.og:title') ?: $post->title,
                 'og:description' => $description,
-                'og:image' =>  $doc->get('image.src') ? App::url()->getStatic($doc->get('image.src'), [], 0) : false
+                'og:image' =>  $post->get('image.src') ? App::url()->getStatic($post->get('image.src'), [], 0) : false
             ],
-            'doc' => $doc,
+            'post' => $post,
             'categories' => $categories->get()
         ];
     }
 
-    protected function doMarkdownLinks($s) {
+    protected function doMarkdownLinks($s) 
+    {
         $regex = '/<h1?2?3?4?5?6? id="(.*)">(.*)<\/h1?2?3?4?5?6?>/';
         preg_match_all($regex , $s , $match);
         $data = [];

@@ -1,5 +1,5 @@
 <?php $view->script('docs', 'docs:app/bundle/docs.js', 'vue') ?>
-<div id="app" class="uk-grid uk-grid-collapse uk-grid-divider" uk-grid>
+<div class="uk-grid uk-grid-collapse uk-grid-divider" uk-grid>
     <div class="uk-width-medium@m">
         <ul class="uk-nav">
             <?php foreach ($categories as $category) : ?>
@@ -9,7 +9,7 @@
                         <div class="uk-margin-bottom">
                             <ul class="uk-nav uk-nav-default">
                                 <?php foreach ($posts as $sub_post) : ?>
-                                    <li <?= $sub_post->slug == $doc->slug ? 'class="uk-active"' : null ?>><a href="<?= $view->url('@docs/slug', ['slug' => $sub_post->slug]) ?>"><?= $sub_post->title ?></a></li>
+                                    <li <?= $sub_post->id == $post->id ? 'class="uk-active"' : null ?>><a href="<?= $view->url('@docs/id', ['id' => $sub_post->id]) ?>"><?= $sub_post->title ?></a></li>
                                 <?php endforeach ?>
                             </ul>
                         </div>
@@ -20,30 +20,34 @@
     </div>
     <div class="uk-width-expand@m uk-first-column">
         <div>
-            <h1 class="uk-h1"><?= $doc->title ?></h1>
+            <h1 class="uk-h1"><?= $post->title ?></h1>
             <article class="uk-comment">
                 <header class="uk-comment-header">
                     <div class="uk-grid-small uk-flex-middle" uk-grid>
                         <div class="uk-width-auto">
-                            <img class="uk-comment-avatar uk-border-circle" src="<?= $view->avatar($doc->user->email) ?>" width="40" height="40" alt="<?= $doc->user->name ?>">
+                            <img class="uk-comment-avatar uk-border-circle" src="<?= $view->avatar($post->user->email) ?>" width="40" height="40" alt="<?= $post->user->name ?>">
                         </div>
                         <div class="uk-width-expand">
-                            <h4 class="uk-h5 uk-margin-remove"><a class="uk-link-reset" href="#"><?= $doc->user->name ?></a></h4>
-                            <time class="uk-text-small" datetime="'<?= $doc->modified->format(\DateTime::ATOM) ?>'" v-cloak>{{ "<?= $doc->modified->format(\DateTime::ATOM) ?>" | relativeDate }} Güncellendi</time>
+                            <h4 class="uk-h5 uk-margin-remove"><a class="uk-link-reset" href="#"><?= $post->user->name ?></a></h4>
+                            <time class="uk-text-small" datetime="'<?= $post->modified->format(\DateTime::ATOM) ?>'" v-cloak>{{ "<?= $post->modified->format(\DateTime::ATOM) ?>" | relativeDate }} Güncellendi</time>
                         </div>
                     </div>
                 </header>
             </article>
-            <div>
-                <?= $doc->content ?>
-            </div>
+            <div class="uk-margin"><?= $post->content ?></div>
         </div>
     </div>
     <div class="uk-width-medium@m uk-visible@m">
         <ul class="uk-nav uk-nav-default">
-            <?php foreach ($doc->links as $link) : ?>
+            <?php foreach ($post->links as $link) : ?>
                 <li><a href="#<?= $link['src'] ?>"><?= $link['name'] ?></a></li>
             <?php endforeach ?>
         </ul>
+        <?php if($post->get('sourceedit')): ?>
+        <hr>
+        <div class="uk-margin-top">
+            <a href="<?= $post->get('sourceedit') ?>" target="_blank" rel="nofollow" class="uk-link-text"><i uk-icon="icon:github;ratio:1.3" class="uk-margin-small-right"></i><?= __('Edit') ?></a>
+        </div>
+        <?php endif ?>
     </div>
 </div>

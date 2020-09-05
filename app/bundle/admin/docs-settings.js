@@ -81,19 +81,20 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./app/views/docs.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/views/admin/docs-settings.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./app/views/docs.js":
-/*!***************************!*\
-  !*** ./app/views/docs.js ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/***/ "./app/views/admin/docs-settings.js":
+/*!******************************************!*\
+  !*** ./app/views/admin/docs-settings.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("Vue.ready(() => {\n  UIkit.util.findAll('time').forEach(time => {\n    new Vue({}).$mount(time);\n  });\n});\n\n//# sourceURL=webpack:///./app/views/docs.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar Settings = {\n  el: '#settings',\n\n  data() {\n    return window.$data;\n  },\n\n  methods: {\n    save() {\n      this.$http.post('admin/system/settings/config', {\n        name: 'docs',\n        config: this.config\n      }).then(function () {\n        this.$notify('Settings saved.');\n      }, function (res) {\n        this.$notify(res.data, 'danger');\n      });\n    }\n\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (Settings);\nVue.ready(Settings);\n\n//# sourceURL=webpack:///./app/views/admin/docs-settings.js?");
 
 /***/ })
 

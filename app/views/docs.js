@@ -1,6 +1,5 @@
-module.exports = {
-    el:'#app',
-    name:'Docs'
-}
-
-Vue.ready(module.exports)
+Vue.ready(() => {
+    UIkit.util.findAll('time').forEach((time) => {
+        new Vue({}).$mount(time);
+    });
+});

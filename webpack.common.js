@@ -5,6 +5,7 @@ module.exports = {
     entry: {
         "admin/index":"./app/views/admin/index",
         "admin/edit":"./app/views/admin/edit",
+        "admin/docs-settings":"./app/views/admin/docs-settings",
         "docs":"./app/views/docs",
     },
     output: {
