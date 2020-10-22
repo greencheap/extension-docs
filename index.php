@@ -64,6 +64,8 @@ return [
         ]
     ],
 
+    'settings' => '@docs/admin/settings',
+
     'events' => [
         'boot' => function ($event, $app) {
             $app->subscribe(

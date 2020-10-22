@@ -3,7 +3,7 @@
     "type": "greencheap-extension",
     "version": "1.0.5",
     "title": "Docs",
-    "description": "Bu eklenti ile kullanıcılarınıza dökümantasyonlar paylaşabilir. Onları istediğiniz bir konuda uzmanca bilgilendirebilirsiniz.",
+    "description": "Dokümantasyon yazmanızı olanak verecek bir eklentidir. Uygulama yada bir ürün hakkında detaylı belgeler sunabilmek için kullanılır.",
     "license": "MIT",
     "authors": [
         {
