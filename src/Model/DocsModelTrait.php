@@ -5,19 +5,19 @@ namespace GreenCheap\Docs\Model;
 use GreenCheap\Database\ORM\Annotation\Saving;
 use GreenCheap\Database\ORM\ModelTrait;
 
-trait PostModelTrait
+trait DocsModelTrait
 {
     use ModelTrait;
 
     /**
      * @Saving
      * @param $event
-     * @param Post $post
+     * @param Docs $docs
      */
-    public static function saving($event , Post $post)
+    public static function saving($event , Docs $docs)
     {
 
-        $data = $post;
+        $data = $docs;
 
         $i  = 2;
         $a = 2;

@@ -3,7 +3,7 @@
 namespace GreenCheap\Docs\Controller;
 
 use GreenCheap\Docs\Model\Category;
-use GreenCheap\Docs\Model\Post;
+use GreenCheap\Docs\Model\Docs;
 use GreenCheap\System\Model\StatusModelTrait;
 use GreenCheap\Application as App;
 
@@ -20,11 +20,14 @@ class SiteController
             return $query->where('roles IS NULL')->whereInSet('roles', App::user()->roles, false, 'OR');
         })->orderBy('priority' , 'asc')->related('posts');
 
-        $query = Post::where(['status = :status', 'date < :date'], ['status' => StatusModelTrait::getStatus('STATUS_PUBLISHED'), 'date' => new \DateTime]);
+        $query = Docs::where(['status = :status', 'date < :date'], ['status' => StatusModelTrait::getStatus('STATUS_PUBLISHED'), 'date' => new \DateTime]);
         if ($id) {
             $query->where('id = :id', ['id' => $id]);
         } else {
-            $query->where('id = :id', ['id' => Category::getFirstPost()]);
+            if(!$getFirstDocs = Category::getFirstPost()){
+                return App::abort(404 , __('Not Found Docs'));
+            }
+            $query->where('id = :id', ['id' => $getFirstDocs]);
         }
         $query->related('user');
         $post = $query->first();

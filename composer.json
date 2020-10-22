@@ -1,15 +1,15 @@
 {
     "name": "greencheap/docs",
     "type": "greencheap-extension",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "title": "Docs",
-    "description": "GreenCheap Docs",
+    "description": "Bu eklenti ile kullanıcılarınıza dökümantasyonlar paylaşabilir. Onları istediğiniz bir konuda uzmanca bilgilendirebilirsiniz.",
     "license": "MIT",
     "authors": [
         {
             "name": "GreenCheap",
             "email": "support@greencheap.net",
-            "homepage": "http://greencheap.net"
+            "homepage": "https://greencheap.net"
         }
     ],
     "extra": {

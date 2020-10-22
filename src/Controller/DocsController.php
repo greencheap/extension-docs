@@ -3,10 +3,7 @@ namespace GreenCheap\Docs\Controller;
 
 use GreenCheap\Application as App;
 use GreenCheap\Docs\Model\Category;
-use GreenCheap\Docs\Model\Post;
-use GreenCheap\Routing\Annotation\Request;
-use GreenCheap\Routing\Annotation\Route;
-use GreenCheap\User\Annotation\Access;
+use GreenCheap\Docs\Model\Docs;
 use GreenCheap\System\Service\StatusModelService;
 use GreenCheap\User\Model\Role;
 
@@ -62,11 +59,11 @@ class DocsController
             return App::abort(400 , __('Not Found Categories'));
         }
 
-        if(!$query = Post::where(compact('id'))->first()){
+        if(!$query = Docs::where(compact('id'))->first()){
             if($id){
-                return App::abort(404 , __('Not Found Post'));
+                return App::abort(404 , __('Not Found Docs'));
             }
-            $query = Post::create([
+            $query = Docs::create([
                 'user_id' => App::user()->id,
                 'date' => new \DateTime(),
                 'category_id' => $categories[0]->id,
@@ -79,7 +76,7 @@ class DocsController
 
         return [
             '$view' => [
-                'title' => $query->id ? __('Edit Post'):__('New Post'),
+                'title' => $query->id ? __('Edit Docs'):__('New Docs'),
                 'name' => 'docs:views/admin/edit.php'
             ],
             '$data' => [

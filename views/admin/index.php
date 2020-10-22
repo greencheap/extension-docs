@@ -2,7 +2,7 @@
 <?php $view->style('docs_style' , 'docs:dist/css/docs.min.css') ?>
 <section id="app">
     <div uk-grid>
-        <div class="uk-width-medium@m">
+        <div class="uk-width-large@m">
             <div v-if="categories.length">
                 <ul class="docs-category" uk-sortable>
                     <li v-for="(category , id) in orderByCategories" :id="id">
@@ -11,9 +11,9 @@
                         <div class="uk-align-right">
                             <ul class="uk-grid uk-grid-small">
                                 <li><span :class="{
-                                    'pk-icon-circle-danger':category.status == 0,
+                                    'pk-icon-circle-warning':category.status == 0,
                                     'pk-icon-circle':category.status == 1,
-                                    'pk-icon-circle-warning':category.status == 2,
+                                    'pk-icon-circle-danger':category.status == 2,
                                     'pk-icon-circle-success':category.status == 3,
                                 }"></span></li>
                                 <li><a @click.prevent="openModal(category)" uk-icon="icon:file-edit;ratio:0.9"></a></li>
@@ -29,9 +29,9 @@
         <div class="uk-width-expand">
             <div class="uk-flex uk-flex-middle uk-flex-between">
                 <div class="uk-flex uk-flex-middle uk-flex-wrap" >
-                    <h2 class="uk-h3 uk-margin-remove" v-if="!selected.length">{{ '{0} %count% Post|{1} %count% Post|]1,Inf[ %count% Posts' | transChoice(count, {count:count}) }}</h2>
+                    <h2 class="uk-h3 uk-margin-remove" v-if="!selected.length">{{ '{0} %count% Doc|{1} %count% Doc|]1,Inf[ %count% Docs' | transChoice(count, {count:count}) }}</h2>
                     <div class="uk-flex uk-flex-middle" v-else>
-                        <h2 class="uk-h2 uk-margin-remove">{{ '{1} %count% Post selected|]1,Inf[ %count% Posts selected' | transChoice(selected.length, {count:selected.length}) }}</h2>
+                        <h2 class="uk-h2 uk-margin-remove">{{ '{1} %count% Doc selected|]1,Inf[ %count% Docs selected' | transChoice(selected.length, {count:selected.length}) }}</h2>
                         <div class="uk-margin-left" >
                             <ul class="uk-subnav pk-subnav-icon">
                                 <li><a class="pk-icon-check pk-icon-hover" :uk-tooltip="'Publish' | trans" @click.prevent="status(3)"></a></li>
@@ -47,8 +47,8 @@
                 </div>
 
                 <div class="uk-text-right">
-                    <a :href="$url('admin/docs/post/edit')" class="uk-button uk-button-primary" v-if="categories.length">{{'Add Post' | trans}}</a>
-                    <button class="uk-button uk-button-primary" :title="'You need to add a category first.' | trans" uk-tooltip disabled v-else>{{'Add Post' | trans}}</button>
+                    <a :href="$url('admin/docs/post/edit')" class="uk-button uk-button-primary" v-if="categories.length">{{ 'Add Post' | trans }}</a>
+                    <button class="uk-button uk-button-primary" :title="'You need to add a category first.' | trans" uk-tooltip disabled v-else>{{ 'Add Post' | trans }}</button>
                 </div>
             </div>
             <div class="uk-margin">
@@ -70,9 +70,9 @@
                         <div class="uk-width-expand"><span class="handler uk-margin-small-right" uk-icon="menu"></span><a :href="$url.route('admin/docs/post/edit', { id: post.id })">{{ post.title }}</a></div>
                         <div class="uk-width-small uk-text-center">
                             <span :class="{
-                                'pk-icon-circle-danger':post.status == 0,
+                                'pk-icon-circle-status':post.status == 0,
                                 'pk-icon-circle':post.status == 1,
-                                'pk-icon-circle-warning':post.status == 2,
+                                'pk-icon-circle-danger':post.status == 2,
                                 'pk-icon-circle-success':post.status == 3 && post.published,
                                 'pk-icon-schedule': post.status == 3 && !post.published
                             }"></span>

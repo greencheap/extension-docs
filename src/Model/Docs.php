@@ -9,13 +9,13 @@ use GreenCheap\System\Model\StatusModelTrait;
 use GreenCheap\Docs\Model\Category;
 
 /**
- * Class Post
+ * Class Docs
  * @package GreenCheap\Docs\Model
  * @Entity(tableClass="@docs_post")
  */
-class Post implements \JsonSerializable
+class Docs implements \JsonSerializable
 {
-    use PostModelTrait , DataModelTrait , StatusModelTrait;
+    use DocsModelTrait , DataModelTrait , StatusModelTrait;
 
     /**
      * @Column(type="integer")

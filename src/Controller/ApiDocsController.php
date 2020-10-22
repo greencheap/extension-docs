@@ -3,11 +3,8 @@ namespace GreenCheap\Docs\Controller;
 
 use GreenCheap\Application as App;
 use GreenCheap\Docs\Model\Category;
-use GreenCheap\Docs\Model\Post;
-use GreenCheap\Routing\Annotation\Request;
-use GreenCheap\Routing\Annotation\Route;
+use GreenCheap\Docs\Model\Docs;
 use GreenCheap\System\Service\StatusModelService;
-use GreenCheap\User\Annotation\Access;
 
 /**
  * Class ApiDocsController
@@ -26,7 +23,7 @@ class ApiDocsController
      */
     public function indexAction( array $filter = [] , int $page = 0 )
     {
-        $query = Post::query();
+        $query = Docs::query();
         $filter = array_merge(array_fill_keys(['status', 'search' , 'category_id' , 'order' , 'limit'], ''), $filter);
         extract($filter, EXTR_SKIP);
 
@@ -62,11 +59,11 @@ class ApiDocsController
      */
     public function saveAction( array $data = [] , int $id = 0 )
     {
-        if( !$query = Post::where(compact('id'))->first() ){
+        if( !$query = Docs::where(compact('id'))->first() ){
             if($id){
                 return App::abort(404 , __('Not Found Category'));
             }
-            $query = Post::create([
+            $query = Docs::create([
                 'user_id' => App::user()->id,
                 'date' => new \DateTime(),
                 'status' => StatusModelService::getStatus('STATUS_DRAFT')
@@ -161,7 +158,7 @@ class ApiDocsController
      */
     public function deleteAction($id)
     {
-        if ($post = Post::find($id)) {
+        if ($post = Docs::find($id)) {
             $post->delete();
         }
 
