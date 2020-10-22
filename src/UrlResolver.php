@@ -3,7 +3,7 @@
 namespace GreenCheap\Docs;
 
 use GreenCheap\Application as App;
-use GreenCheap\Docs\Model\Post;
+use GreenCheap\Docs\Model\Docs;
 use GreenCheap\Routing\ParamsResolverInterface;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
@@ -41,7 +41,7 @@ class UrlResolver implements ParamsResolverInterface
         }
 
         if (!isset($parameters['slug'])) {
-            App::abort(404, 'Post not found.');
+            App::abort(404, 'Docs not found.');
         }
 
         $slug = $parameters['slug'];
@@ -55,8 +55,8 @@ class UrlResolver implements ParamsResolverInterface
 
         if (!$id) {
 
-            if (!$post = Post::where(compact('slug'))->first()) {
-                App::abort(404, 'Post not found.');
+            if (!$post = Docs::where(compact('slug'))->first()) {
+                App::abort(404, 'Docs not found.');
             }
 
             $this->addCache($post);
@@ -77,8 +77,8 @@ class UrlResolver implements ParamsResolverInterface
 
         if (!isset($this->cacheEntries[$id])) {
 
-            if (!$post = Post::where(compact('id'))->first()) {
-                throw new RouteNotFoundException('Post not found!');
+            if (!$post = Docs::where(compact('id'))->first()) {
+                throw new RouteNotFoundException('Docs not found!');
             }
 
             $this->addCache($post);
