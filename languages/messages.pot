@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GreenCheap 2.0.9.3-beta (greencheap/docs, messages)\n"
-"POT-Creation-Date: 2020-08-24 00:41+0000\n"
+"Project-Id-Version: GreenCheap 2.0.10.6-RC1 (greencheap/docs, messages)\n"
+"POT-Creation-Date: 2020-10-22 23:43+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,6 +12,54 @@ msgstr ""
 msgid "Filter by"
 msgstr ""
 
+msgid "Source Edit Link"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Enable Markdown"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Permalink"
+msgstr ""
+
+msgid "Numeric"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Day and name"
+msgstr ""
+
+msgid "Month and name"
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid "Posts per page"
+msgstr ""
+
+msgid "Default post settings"
+msgstr ""
+
+msgid "Add Post"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
 msgid "No posts found."
 msgstr ""
 
@@ -19,9 +67,6 @@ msgid "Close"
 msgstr ""
 
 msgid "Delete"
-msgstr ""
-
-msgid "Save"
 msgstr ""
 
 msgid "Add"
@@ -48,13 +93,13 @@ msgstr ""
 msgid "Not Found Categories"
 msgstr ""
 
-msgid "Not Found Post"
+msgid "Not Found Docs"
 msgstr ""
 
-msgid "Edit Post"
+msgid "New Docs"
 msgstr ""
 
-msgid "New Post"
+msgid "Docs Settings"
 msgstr ""
 
 msgid "Not Found Document"
