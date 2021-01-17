@@ -31,12 +31,12 @@
                 <div class="uk-flex uk-flex-middle uk-flex-wrap" >
                     <h2 class="uk-h3 uk-margin-remove" v-if="!selected.length">{{ '{0} %count% Doc|{1} %count% Doc|]1,Inf[ %count% Docs' | transChoice(count, {count:count}) }}</h2>
                     <div class="uk-flex uk-flex-middle" v-else>
-                        <h2 class="uk-h2 uk-margin-remove">{{ '{1} %count% Doc selected|]1,Inf[ %count% Docs selected' | transChoice(selected.length, {count:selected.length}) }}</h2>
+                        <h2 class="uk-h3 uk-margin-remove">{{ '{1} %count% Doc selected|]1,Inf[ %count% Docs selected' | transChoice(selected.length, {count:selected.length}) }}</h2>
                         <div class="uk-margin-left" >
-                            <ul class="uk-subnav pk-subnav-icon">
-                                <li><a class="pk-icon-check pk-icon-hover" :uk-tooltip="'Publish' | trans" @click.prevent="status(3)"></a></li>
-                                <li><a class="pk-icon-block pk-icon-hover" :uk-tooltip="'Unpublish' | trans" @click.prevent="status(2)"></a></li>
-                                <li><a class="pk-icon-delete pk-icon-hover" :uk-tooltip="'Delete' | trans" @click.prevent="remove()" v-confirm="'Delete Post?'"></a></li>
+                            <ul class="uk-iconnav">
+                                <li><a uk-icon="icon:check;ratio:1" :uk-tooltip="'Publish' | trans" @click.prevent="status(3)"></a></li>
+                                <li><a uk-icon="icon:ban;ratio:1" :uk-tooltip="'Unpublish' | trans" @click.prevent="status(2)"></a></li>
+                                <li><a uk-icon="icon:trash;ratio:1" :uk-tooltip="'Delete' | trans" @click.prevent="remove()" v-confirm="'Delete Post?'"></a></li>
                             </ul>
                         </div>
                     </div>

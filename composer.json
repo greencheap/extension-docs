@@ -1,9 +1,9 @@
 {
     "name": "greencheap/docs",
     "type": "greencheap-extension",
-    "version": "1.0.5.1",
+    "version": "2.0.0",
     "title": "Docs",
-    "description": "Dokümantasyon yazmanızı olanak verecek bir eklentidir. Uygulama yada bir ürün hakkında detaylı belgeler sunabilmek için kullanılır.",
+    "description": "It is a plugin that will allow you to write documentation. It is used to present information about an application or a product.",
     "license": "MIT",
     "authors": [
         {

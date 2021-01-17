@@ -65,7 +65,7 @@ class SiteController
 
     protected function doMarkdownLinks($s) 
     {
-        $regex = '/<h1?2?3?4?5?6? id="(.*)">(.*)<\/h1?2?3?4?5?6?>/';
+        $regex = '/<h1?2? id="(.*)">(.*)<\/h1?2?>/';
         preg_match_all($regex , $s , $match);
         $data = [];
         foreach($match[2] as $key => $value){
