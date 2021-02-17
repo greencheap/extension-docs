@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 1.0.5.1 - 2020-10-22
+## 1.0.7 - 2020-10-22
 
 ### Fix
 - Posts entity change name Docs

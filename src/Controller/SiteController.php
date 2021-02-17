@@ -12,7 +12,6 @@ class SiteController
     /**
      * @Route("/")
      * @Route("/{id}" , name="id")
-     * @Captcha(verify="true")
      */
     public function indexAction(string $id = '')
     {
