@@ -15,7 +15,7 @@ return [
                 $table->addColumn('modified' , 'datetime' , ['notnull' => false]);
                 $table->addColumn('content' , 'text' , ['notnull' => false]);
                 $table->addColumn('priority' , 'integer' , ['default' => 999]);
-                $table->addColumn('data' , 'json_array' , ['notnull' => false]);
+                $table->addColumn('data' , 'json' , ['notnull' => false]);
                 $table->setPrimaryKey(['id']);
                 $table->addIndex(['title'] , '@DOCS_POST_TITLE');
                 $table->addIndex(['slug'] , '@DOCS_POST_SLUG');
@@ -30,7 +30,7 @@ return [
                 $table->addColumn('status' , 'integer');
                 $table->addColumn('priority' , 'integer' , ['default' => 999]);
                 $table->addColumn('roles' , 'simple_array' , ['notnull' => false]);
-                $table->addColumn('data' , 'json_array' , ['notnull' => false]);
+                $table->addColumn('data' , 'json' , ['notnull' => false]);
                 $table->setPrimaryKey(['id']);
                 $table->addIndex(['title'] , '@DOCS_CATEGORY_TITLE');
                 $table->addIndex(['slug'] , '@DOCS_CATEGORY_SLUG');

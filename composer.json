@@ -1,7 +1,7 @@
 {
     "name": "greencheap/docs",
     "type": "greencheap-extension",
-    "version": "1.0.7",
+    "version": "1.1.0",
     "title": "Docs",
     "description": "It is a plugin that will allow you to write documentation. It is used to present information about an application or a product.",
     "license": "MIT",
@@ -15,6 +15,11 @@
     "extra": {
         "icon": "icon.svg",
         "scripts": "scripts.php"
+    },
+    "appstore": {
+        "greencheap_version": "~3.3.*",
+        "requirements":{},
+        "compatible":{}
     },
     "archive": {
         "exclude": ["node_modules", "!/app"]

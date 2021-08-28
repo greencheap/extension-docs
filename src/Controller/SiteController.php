@@ -62,7 +62,11 @@ class SiteController
         ];
     }
 
-    protected function doMarkdownLinks($s) 
+    /**
+     * @param $s
+     * @return array
+     */
+    protected function doMarkdownLinks($s): array
     {
         $regex = '/<h1?2? id="(.*)">(.*)<\/h1?2?>/';
         preg_match_all($regex , $s , $match);

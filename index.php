@@ -43,6 +43,13 @@ return [
         ]
     ],
 
+    "sitemaps" => [
+        "docs" => [
+            "name" => "docs",
+            "generator" => "GreenCheap\\Docs\\Sitemaps\\DocsSitemap",
+        ],
+    ],
+
     'routes' => [
         'docs' => [
             'name' => '@docs',
